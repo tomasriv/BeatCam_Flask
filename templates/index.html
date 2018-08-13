@@ -1,0 +1,73 @@
+{% extends "master.html" %}
+{% block body %}
+  <div id="movingParts">
+    <div id="hidden">
+        <div id="instructions"></div>
+        <div id="arrow" class="pulse"></div>
+        <h2 id="allowWebcam">Permitir Camara Web</h2>
+    </div>
+    <div id="vid" class="video">
+      <div id="border"></div>
+
+      <canvas id="canvas" class="video"></canvas>
+      <canvas id="canvasOverlay" class="video"></canvas>
+      
+     
+    </div>
+
+    <div id="buttonBar" class="hide button">
+        <button id="end_camera" name="end_camera" class="button">Pausar Camara</button>
+        <button id="blurToggle" name="blurToggle" class="button">Enfocar Video</button>
+        <button id="minToggle" name="minToggle" class="button">Minimizar Video</button>
+    </div>
+  </div>
+
+  <div id="heartbeat"></div>
+
+  <div id="graphs">
+    <div id="rawDataGraphContainer">
+      <div id="rawDataGraph" class="graph"></div>
+      <p id="rawDataLabel">Cambios en tonalidad (video)</p>
+    </div>
+    <div id="confidenceGraph" class="graph"></div>
+
+  </div>
+
+  <script src="/static/js/main.js"></script>
+  <script type="text/javascript">
+    // ** USER INTERFACE **
+    // jQuery provides functionality for animation 
+    // and basic UI
+
+    $( "#minToggle" ).click(function() {
+      if ($("#minToggle").html() == "Minimizar Video"){
+        minimizeVideo();
+      } else {
+        maximizeVideo();
+      }
+    });
+
+    $( "#blurToggle" ).click(function() {
+      $( "#canvas" ).toggleClass("blur");
+      $( "#border").toggleClass("border");
+
+      var html = $("#blurToggle").html()
+
+      if ($("#blurToggle").html() == "Desenfocar Video"){
+        $("#blurToggle").html("Enfocar Video");
+      } else {
+        $("#blurToggle").html("Desenforcar Video");
+      }
+    });
+
+    $("#end_camera").click(function(){
+      if ($("#end_camera").html() == "Pausar Camera"){
+        $("#end_camera").html("Reiniciar Camera");
+      } else {
+        $("#end_camera").html("Pausar Camera");
+      }
+    });
+
+
+  </script>
+{% endblock %}
