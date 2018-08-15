@@ -314,7 +314,7 @@ var camera = (function(){
       
       confidenceGraph.append("svg:path").attr("d", line(data)).attr("class", "line");
       confidenceGraph.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-      confidenceGraph.append("text").attr("x", 235).attr("y", height + 40).style("text-anchor", "end").text("Confidence in frequency in BPM").attr("font-size", "12pt").attr("fill", "steelblue");
+      confidenceGraph.append("text").attr("x", 235).attr("y", height + 40).style("text-anchor", "end").text("Fiabilidad de la frecuencia en BPM").attr("font-size", "12pt").attr("fill", "steelblue");
     }
   }
 
